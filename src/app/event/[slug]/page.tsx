@@ -20,7 +20,7 @@ export default async function EventPage({params}: eventPageProps) {
 
 
       <div className="z-1 flex flex-col gap-6 lg:gap-16 lg:flex-row relative">
-        <Image src={event.imageUrl} alt={event.title} width={300} height={201} className="rounded-xl border-2 border-white/50 object-cover"/>
+        <Image src={event.imageUrl} alt={event.name} width={300} height={201} className="rounded-xl border-2 border-white/50 object-cover"/>
 
       <div className="flex flex-col">
         <p className="text-white/75">{ new Date(event.date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</p>

@@ -14,7 +14,7 @@ export default function EventCard({ event }: EventCardProps) {
     <Link className="flex-1 basis-80 h-[380px] max-w-[500px]" href={`/event/${event.slug}`}>
     <section className="w-full h-full flex flex-col bg-white/[3%] rounded-xl overflow-hidden relative scale-effects">
         <Image src={event.imageUrl} alt={event.name} width={500} height={280} 
-        className="h-[60%] object-fit"/>
+        className="h-[60%] object-cover"/>
         <div className="flex flex-col flex-1 justify-center items-center">
             <h2 className="text-2xl font-semibold">{event.name}</h2>
             <p className="italic text-white/75">By {event.organizerName}</p>
