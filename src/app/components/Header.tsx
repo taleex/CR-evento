@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import Logo from "./Logo";
+import Logo from "./logo";
 import { usePathname } from "next/navigation";
-import { clsx } from "clsx";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 const routes = [
   { path: "/", label: "Home" },
@@ -22,7 +22,7 @@ export default function Header() {
       <nav className="h-full">
         <ul className="flex gap-6 h-full text-sm">
           {routes.map((route) => (
-            <li key={route.path} className={clsx(" hover:text-white flex items-center relative transition",{
+            <li key={route.path} className={cn(" hover:text-white flex items-center relative transition",{
               "text-white": activePathname === route.path,
               "text-white/50": activePathname !== route.path,
             })}>
