@@ -2,16 +2,20 @@ import EventsList from "@/app/components/events-list";
 import H1 from "@/app/components/h1";
 import { Suspense } from "react";
 import Loading from "./loading";
-import { Metadata } from "next";
 import { capitalize } from "@/lib/utils";
 
-type EventsPageProps = {
+type Props = {
   params: {
     city: string;
   }
 }
 
-export function generateMetadata({ params }: EventsPageProps) {
+type EventsPageProps = Props & {
+  searchParams: {[key: string]: string | string[] | undefined };
+}
+
+
+export function generateMetadata({ params }: Props) {
   const city = params.city;
 
   return {
@@ -20,9 +24,10 @@ export function generateMetadata({ params }: EventsPageProps) {
 }
 
 export default async function EventsPage({
-  params, }: EventsPageProps
+  params, searchParams }: EventsPageProps
 ) {
   const city = params.city;
+  const page = searchParams.page || 1;
 
   return (
     <main className="flex flex-col items-center py-24 px-[20px] min-h-[110vh]">
@@ -31,8 +36,8 @@ export default async function EventsPage({
         { city !== "all" && `Events in ${capitalize(city)}` }
         </H1>
 
-        <Suspense fallback={<Loading />}>
-          <EventsList city={city} />
+        <Suspense key={city + page} fallback={<Loading />}>
+          <EventsList city={city} page={+page} />
         </Suspense>
 
         
