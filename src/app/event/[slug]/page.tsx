@@ -35,7 +35,7 @@ export default async function EventPage({params}: eventPageProps) {
       <div className="flex flex-col">
         <p className="text-white/75">{ new Date(event.date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</p>
         <H1 className="mb-2 mt-1 whitespace-nowrap lg:text-5xl">{event.name}</H1>
-        <p className="whitespace-nowrap text-white/75">Organized by <span className="italic">{event.organizer}</span></p>
+        <p className="whitespace-nowrap text-white/75">Organized by <span className="italic">{event.organizerName}</span></p>
 
         <button className="bg-white/20 text-lg capitalize bg-blur mt-5 lg:mt-auto w-[95] rounded-md
          border-white/10 border-2 sm:w-full py-2
