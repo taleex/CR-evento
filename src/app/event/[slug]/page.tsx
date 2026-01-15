@@ -1,12 +1,12 @@
 import H1 from "@/app/components/h1"
-import { capitalize, getEvent } from "@/lib/utils"
+import { getEvent } from "@/lib/server-utilis"
 import { Metadata } from "next"
 import Image from "next/image"
 
 type eventPageProps = {
   params: {
     slug: string
-  }
+  };
 }
 
 export async function generateMetadata({ params }: eventPageProps): Promise<Metadata> {
@@ -15,8 +15,15 @@ export async function generateMetadata({ params }: eventPageProps): Promise<Meta
   const event = await getEvent(slug);
   
   return {
-    title: `${capitalize(event.name)}`,
+    title: event.name,
   }
+}
+
+export async function generateStaticParams() {
+  //top 100 most popular events
+  return [{  slug: 'comedy-extravaganza'
+  },
+  {slug: 'dj-practice-session'},]
 }
 
 export default async function EventPage({params}: eventPageProps) {

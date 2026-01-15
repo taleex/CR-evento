@@ -1,7 +1,7 @@
 import { EventoEvent } from "@prisma/client";
 import EventCard from "./event-card";
-import { getEvents } from "@/lib/utils";
 import PaginationControls from "./pagination-controls";
+import { getEvents } from "@/lib/server-utilis";
 
 type EventsListProps = {
   city: string;
